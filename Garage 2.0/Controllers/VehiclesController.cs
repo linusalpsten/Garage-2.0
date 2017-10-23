@@ -41,7 +41,14 @@ namespace Garage_2._0.Controllers
             {
                 return HttpNotFound();
             }
-            var vehicleItem = new VehicleDetails { Id = vehicle.Id, Model = vehicle.Model, Brand = vehicle.Brand, Color = vehicle.Color, ParkingTime = vehicle.ParkingTime, RegistrationNumber = vehicle.RegistrationNumber };
+            var vehicleItem = new VehicleDetails {
+                Id = vehicle.Id,
+                Model = vehicle.Model,
+                Brand = vehicle.Brand,
+                Color = vehicle.Color,
+                ParkingTime = vehicle.ParkingTime,
+                RegistrationNumber = vehicle.RegistrationNumber
+            };
             return View(vehicleItem);
         }
 
@@ -121,7 +128,16 @@ namespace Garage_2._0.Controllers
             {
                 return HttpNotFound();
             }
-            return View(vehicle);
+            var vehicleItem = new VehicleDetails
+            {
+                Id = vehicle.Id,
+                Model = vehicle.Model,
+                Brand = vehicle.Brand,
+                Color = vehicle.Color,
+                ParkingTime = vehicle.ParkingTime,
+                RegistrationNumber = vehicle.RegistrationNumber
+            };
+            return View(vehicleItem);
         }
 
         // POST: Vehicles/Delete/5
