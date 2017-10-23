@@ -37,7 +37,7 @@ namespace Garage_2._0.Controllers
         }
 
         // GET: Vehicles/Create
-        public ActionResult Park()
+        public ActionResult CheckIn()
         {
             return View();
         }
@@ -47,7 +47,7 @@ namespace Garage_2._0.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Park([Bind(Include = "Id,RegistrationNumber,Color,Brand,Model,NumberOfWheels")] Vehicle vehicle)
+        public ActionResult CheckIn([Bind(Include = "Id,RegistrationNumber,Color,Brand,Model,NumberOfWheels")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace Garage_2._0.Controllers
         }
 
         // GET: Vehicles/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult CheckOut(int? id)
         {
             if (id == null)
             {
@@ -108,7 +108,7 @@ namespace Garage_2._0.Controllers
         // POST: Vehicles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult CheckOutConfirmed(int id)
         {
             Vehicle vehicle = db.Vehicles.Find(id);
             db.Vehicles.Remove(vehicle);
