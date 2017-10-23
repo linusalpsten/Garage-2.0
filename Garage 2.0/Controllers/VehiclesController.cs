@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Garage_2._0.DataAccess;
 using Garage_2._0.Models;
+using Garage_2._0.ViewModels;
 
 namespace Garage_2._0.Controllers
 {
@@ -18,7 +19,14 @@ namespace Garage_2._0.Controllers
         // GET: Vehicles
         public ActionResult Index()
         {
-            return View(db.Vehicles.ToList());
+            List<Vehicle> vehicles = db.Vehicles.ToList();
+            var vehicleItems = vehicles.Select(v => new VehicleIndex
+            {
+                Id = v.Id,
+                RegistrationNumber = v.RegistrationNumber,
+                Model = v.Model
+            });
+            return View(vehicleItems);
         }
 
         // GET: Vehicles/Details/5
@@ -33,7 +41,8 @@ namespace Garage_2._0.Controllers
             {
                 return HttpNotFound();
             }
-            return View(vehicle);
+            var vehicleItem = new VehicleDetails { Id = vehicle.Id, Model = vehicle.Model, Brand = vehicle.Brand, Color = vehicle.Color, ParkingTime = vehicle.ParkingTime, RegistrationNumber = vehicle.RegistrationNumber };
+            return View(vehicleItem);
         }
 
         // GET: Vehicles/Create
