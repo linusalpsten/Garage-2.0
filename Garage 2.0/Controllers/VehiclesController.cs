@@ -143,28 +143,28 @@ namespace Garage_2._0.Controllers
         // POST: Vehicles/Delete/5
         [HttpPost, ActionName("CheckOut")]
         [ValidateAntiForgeryToken]
-        public ActionResult CheckOutConfirmed(int id, bool kvitto)
+        public ActionResult CheckOutConfirmed(int id, bool receipt)
         {
             Vehicle vehicle = db.Vehicles.Find(id);
             db.Vehicles.Remove(vehicle);
             db.SaveChanges();
-            if (kvitto)
+            if (receipt)
             {
                 //  var kvittoItem = new Kvitto { checkOutTime = DateTime.Now}
-                var kvittoItem = new Kvitto
+                var receiptItem = new Kvitto
                 {
                     RegistrationNumber = vehicle.RegistrationNumber,
                     CheckInTime = vehicle.CheckInTime,
                     CheckOutTime = DateTime.Now
                 };
-                return RedirectToAction("Kvitto", kvittoItem);
+                return RedirectToAction("Receipt", receiptItem);
             }
             return RedirectToAction("Index");
         }
 
-        public ActionResult Kvitto(Kvitto kvitto)
+        public ActionResult Receipt(Kvitto receipt)
         {
-            return View(kvitto);
+            return View(receipt);
         }
 
         protected override void Dispose(bool disposing)
