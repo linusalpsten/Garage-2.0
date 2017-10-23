@@ -46,7 +46,7 @@ namespace Garage_2._0.Controllers
                 Model = vehicle.Model,
                 Brand = vehicle.Brand,
                 Color = vehicle.Color,
-                ParkingTime = vehicle.ParkingTime,
+                CheckInTime = vehicle.CheckInTime,
                 RegistrationNumber = vehicle.RegistrationNumber
             };
             return View(vehicleItem);
@@ -75,7 +75,7 @@ namespace Garage_2._0.Controllers
                     Color = vehicleData.Color,
                     Model = vehicleData.Model,
                     NumberOfWheels = vehicleData.NumberOfWheels,
-                    ParkingTime = DateTime.Now
+                    CheckInTime = DateTime.Now
                 };
                 db.Vehicles.Add(vehicle);
                 db.SaveChanges();
@@ -134,7 +134,7 @@ namespace Garage_2._0.Controllers
                 Model = vehicle.Model,
                 Brand = vehicle.Brand,
                 Color = vehicle.Color,
-                ParkingTime = vehicle.ParkingTime,
+                CheckInTime = vehicle.CheckInTime,
                 RegistrationNumber = vehicle.RegistrationNumber
             };
             return View(vehicleItem);
@@ -145,15 +145,26 @@ namespace Garage_2._0.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CheckOutConfirmed(int id, bool kvitto)
         {
-            if (kvitto)
-            {
-                //  var kvittoItem = new Kvitto { checkOutTime = DateTime.Now}
-                return RedirectToAction("Index", "Home");
-            }
             Vehicle vehicle = db.Vehicles.Find(id);
             db.Vehicles.Remove(vehicle);
             db.SaveChanges();
+            if (kvitto)
+            {
+                //  var kvittoItem = new Kvitto { checkOutTime = DateTime.Now}
+                var kvittoItem = new Kvitto
+                {
+                    RegistrationNumber = vehicle.RegistrationNumber,
+                    CheckInTime = vehicle.CheckInTime,
+                    CheckOutTime = DateTime.Now
+                };
+                return RedirectToAction("Kvitto", kvittoItem);
+            }
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Kvitto(Kvitto kvitto)
+        {
+            return View(kvitto);
         }
 
         protected override void Dispose(bool disposing)

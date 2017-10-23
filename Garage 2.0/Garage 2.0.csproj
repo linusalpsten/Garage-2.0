@@ -145,9 +145,14 @@
     <Compile Include="Migrations\201710230814419_change_regnr_requirements.Designer.cs">
       <DependentUpon>201710230814419_change_regnr_requirements.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710231043009_change_name_parkingtime.cs" />
+    <Compile Include="Migrations\201710231043009_change_name_parkingtime.Designer.cs">
+      <DependentUpon>201710231043009_change_name_parkingtime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Kvitto.cs" />
     <Compile Include="ViewModels\VehicleDetails.cs" />
     <Compile Include="ViewModels\VehicleIndex.cs" />
   </ItemGroup>
@@ -191,6 +196,7 @@
     <Content Include="Views\Vehicles\Details.cshtml" />
     <Content Include="Views\Vehicles\Edit.cshtml" />
     <Content Include="Views\Vehicles\Index.cshtml" />
+    <Content Include="Views\Vehicles\Kvitto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -209,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710230814419_change_regnr_requirements.resx">
       <DependentUpon>201710230814419_change_regnr_requirements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710231043009_change_name_parkingtime.resx">
+      <DependentUpon>201710231043009_change_name_parkingtime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

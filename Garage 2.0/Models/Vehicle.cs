@@ -21,6 +21,6 @@ namespace Garage_2._0.Models
         [Range(1,20,ErrorMessage = "The number of wheels should be between 1 and 20")]
         [DisplayName("Number of Wheels")]
         public int NumberOfWheels { get; set; }
-        public DateTime ParkingTime { get; set; }
+        public DateTime CheckInTime { get; set; }
     }
 }

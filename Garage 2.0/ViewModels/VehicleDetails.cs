@@ -15,7 +15,7 @@ namespace Garage_2._0.ViewModels
         public Color Color { get; set; }
         public Brand Brand { get; set; }
         public Model Model { get; set; }
-        [DisplayName("Parking Time")]
-        public DateTime ParkingTime { get; set; }
+        [DisplayName("Check In Time")]
+        public DateTime CheckInTime { get; set; }
     }
 }

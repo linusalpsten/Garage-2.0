@@ -29,9 +29,9 @@ namespace Garage_2._0.Migrations
             //
             context.Vehicles.AddOrUpdate(
                 p => p.RegistrationNumber,
-                new Vehicle { RegistrationNumber = "abc123", Brand = Enums.Brand.Ford, Color = Enums.Color.Black, Model = Enums.Model.Car, NumberOfWheels = 4, ParkingTime = DateTime.Now },
-                new Vehicle { RegistrationNumber = "bcd234", Brand = Enums.Brand.Opel, Color = Enums.Color.Blue, Model = Enums.Model.Car, NumberOfWheels = 4, ParkingTime = DateTime.Now },
-                new Vehicle { RegistrationNumber = "cde345", Brand = Enums.Brand.Renault, Color = Enums.Color.Green, Model = Enums.Model.Car, NumberOfWheels = 4, ParkingTime = DateTime.Now }
+                new Vehicle { RegistrationNumber = "abc123", Brand = Enums.Brand.Ford, Color = Enums.Color.Black, Model = Enums.Model.Car, NumberOfWheels = 4, CheckInTime = DateTime.Now },
+                new Vehicle { RegistrationNumber = "bcd234", Brand = Enums.Brand.Opel, Color = Enums.Color.Blue, Model = Enums.Model.Car, NumberOfWheels = 4, CheckInTime = DateTime.Now },
+                new Vehicle { RegistrationNumber = "cde345", Brand = Enums.Brand.Renault, Color = Enums.Color.Green, Model = Enums.Model.Car, NumberOfWheels = 4, CheckInTime = DateTime.Now }
                 );
         }
     }
