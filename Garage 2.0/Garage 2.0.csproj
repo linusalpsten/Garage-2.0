@@ -141,6 +141,10 @@
     <Compile Include="Migrations\201710230742550_init.Designer.cs">
       <DependentUpon>201710230742550_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710230814419_change_regnr_requirements.cs" />
+    <Compile Include="Migrations\201710230814419_change_regnr_requirements.Designer.cs">
+      <DependentUpon>201710230814419_change_regnr_requirements.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -200,6 +204,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710230742550_init.resx">
       <DependentUpon>201710230742550_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710230814419_change_regnr_requirements.resx">
+      <DependentUpon>201710230814419_change_regnr_requirements.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
