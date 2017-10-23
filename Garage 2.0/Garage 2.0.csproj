@@ -131,6 +131,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VehiclesController.cs" />
     <Compile Include="DataAccess\VehicleContext.cs" />
+    <Compile Include="Enums\Brand.cs" />
+    <Compile Include="Enums\Color.cs" />
+    <Compile Include="Enums\Model.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
