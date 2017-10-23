@@ -29,6 +29,18 @@ namespace Garage_2._0.Controllers
             return View(vehicleItems);
         }
 
+        public ActionResult Find(string SearchString)
+        {
+            List<Vehicle> vehicles = db.Vehicles.Where(v => v.RegistrationNumber == SearchString).ToList();
+            var vehicleItems = vehicles.Select(v => new VehicleIndex
+            {
+                Id = v.Id,
+                RegistrationNumber = v.RegistrationNumber,
+                Model = v.Model
+            });
+            return View("Index", vehicleItems);
+        }
+
         // GET: Vehicles/Details/5
         public ActionResult Details(int? id)
         {
@@ -143,28 +155,28 @@ namespace Garage_2._0.Controllers
         // POST: Vehicles/Delete/5
         [HttpPost, ActionName("CheckOut")]
         [ValidateAntiForgeryToken]
-        public ActionResult CheckOutConfirmed(int id, bool kvitto)
+        public ActionResult CheckOutConfirmed(int id, bool receipt)
         {
             Vehicle vehicle = db.Vehicles.Find(id);
             db.Vehicles.Remove(vehicle);
             db.SaveChanges();
-            if (kvitto)
+            if (receipt)
             {
                 //  var kvittoItem = new Kvitto { checkOutTime = DateTime.Now}
-                var kvittoItem = new Kvitto
+                var receiptItem = new Kvitto
                 {
                     RegistrationNumber = vehicle.RegistrationNumber,
                     CheckInTime = vehicle.CheckInTime,
                     CheckOutTime = DateTime.Now
                 };
-                return RedirectToAction("Kvitto", kvittoItem);
+                return RedirectToAction("Receipt", receiptItem);
             }
             return RedirectToAction("Index");
         }
 
-        public ActionResult Kvitto(Kvitto kvitto)
+        public ActionResult Receipt(Kvitto receipt)
         {
-            return View(kvitto);
+            return View(receipt);
         }
 
         protected override void Dispose(bool disposing)
