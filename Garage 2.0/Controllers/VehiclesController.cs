@@ -141,10 +141,15 @@ namespace Garage_2._0.Controllers
         }
 
         // POST: Vehicles/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("CheckOut")]
         [ValidateAntiForgeryToken]
-        public ActionResult CheckOutConfirmed(int id)
+        public ActionResult CheckOutConfirmed(int id, bool kvitto)
         {
+            if (kvitto)
+            {
+                //  var kvittoItem = new Kvitto { checkOutTime = DateTime.Now}
+                return RedirectToAction("Index", "Home");
+            }
             Vehicle vehicle = db.Vehicles.Find(id);
             db.Vehicles.Remove(vehicle);
             db.SaveChanges();

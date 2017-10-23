@@ -10,7 +10,7 @@
 <div>
     <h4>Vehicle</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style="margin-bottom:0px;">
         <dt>
             @Html.DisplayNameFor(model => model.RegistrationNumber)
         </dt>
@@ -51,19 +51,20 @@
             @Html.DisplayFor(model => model.ParkingTime)
         </dd>
 
-        <dt>
-            Kvitto?
-        </dt>
-
-        <dd>
-            @Html.CheckBox("kvitto")
-        </dd>
+        
 
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
-
+        <dl class="dl-horizontal" style="margin-top:0px;">
+            <dt>
+                Kvitto?
+            </dt>
+            <dd>
+                @Html.CheckBox("kvitto")
+            </dd>
+        </dl>
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
             @Html.ActionLink("Back to List", "Index")
