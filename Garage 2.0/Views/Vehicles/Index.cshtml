@@ -4,8 +4,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
+<h2>
+    @Html.ActionLink("Index","Index")
+</h2>
+@using (Html.BeginForm("Find", "Vehicles"))
+{
+    <p>
+        Search: <input type="text" name="SearchString" />
+        <input type="submit" value="Find" class="btn btn-default" />
+    </p>
+}
 <p>
     @Html.ActionLink("Check In", "CheckIn")
 </p>

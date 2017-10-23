@@ -29,6 +29,18 @@ namespace Garage_2._0.Controllers
             return View(vehicleItems);
         }
 
+        public ActionResult Find(string SearchString)
+        {
+            List<Vehicle> vehicles = db.Vehicles.Where(v => v.RegistrationNumber == SearchString).ToList();
+            var vehicleItems = vehicles.Select(v => new VehicleIndex
+            {
+                Id = v.Id,
+                RegistrationNumber = v.RegistrationNumber,
+                Model = v.Model
+            });
+            return View("Index", vehicleItems);
+        }
+
         // GET: Vehicles/Details/5
         public ActionResult Details(int? id)
         {
