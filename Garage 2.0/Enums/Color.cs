@@ -7,5 +7,6 @@ namespace Garage_2._0.Enums
 {
     public enum Color
     {
+        Black, White, Red, Blue, Green, Yellow, Gray
     }
 }
