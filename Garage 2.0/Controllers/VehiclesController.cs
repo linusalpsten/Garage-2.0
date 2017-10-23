@@ -47,16 +47,26 @@ namespace Garage_2._0.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CheckIn([Bind(Include = "Id,RegistrationNumber,Color,Brand,Model,NumberOfWheels")] Vehicle vehicle)
+        public ActionResult CheckIn([Bind(Include = "Id,RegistrationNumber,Color,Brand,Model,NumberOfWheels")] Vehicle vehicleData)
         {
             if (ModelState.IsValid)
             {
+                var vehicle = new Vehicle
+                {
+                    Id = vehicleData.Id,
+                    RegistrationNumber = vehicleData.RegistrationNumber,
+                    Brand = vehicleData.Brand,
+                    Color = vehicleData.Color,
+                    Model = vehicleData.Model,
+                    NumberOfWheels = vehicleData.NumberOfWheels,
+                    ParkingTime = DateTime.Now
+                };
                 db.Vehicles.Add(vehicle);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(vehicle);
+            return View(vehicleData);
         }
 
         // GET: Vehicles/Edit/5
