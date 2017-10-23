@@ -10,7 +10,7 @@
 @using (Html.BeginForm("Find", "Vehicles"))
 {
     <p>
-        Search: <input type="text" name="SearchString" />
+        Search: <input type="text" name="SearchString" pattern="[a-zA-Z]{3}\d{3}|[a-zA-Z]{1,8}" title="Registration number should have 3 letters followed by 3 numbers or 1 to 8 letters"/>
         <input type="submit" value="Find" class="btn btn-default" />
     </p>
 }
