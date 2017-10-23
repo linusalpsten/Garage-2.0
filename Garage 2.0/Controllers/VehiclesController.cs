@@ -37,7 +37,7 @@ namespace Garage_2._0.Controllers
         }
 
         // GET: Vehicles/Create
-        public ActionResult Create()
+        public ActionResult Park()
         {
             return View();
         }
@@ -47,7 +47,7 @@ namespace Garage_2._0.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,RegistrationNumber,Color,Brand,Model,NumberOfWheels")] Vehicle vehicle)
+        public ActionResult Park([Bind(Include = "Id,RegistrationNumber,Color,Brand,Model,NumberOfWheels")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
