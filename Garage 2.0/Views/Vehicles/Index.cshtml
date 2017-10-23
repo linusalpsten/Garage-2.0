@@ -7,9 +7,9 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Check In", "CheckIn")
+    @Html.ActionLink(" ", "CheckIn", null,  new { @class = "btn btn-default glyphicon glyphicon-plus" })
 </p>
-<table class="table">
+<table class="table" >
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.RegistrationNumber)
@@ -29,9 +29,9 @@
             @Html.DisplayFor(modelItem => item.Model)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Check Out", "CheckOut", new { id=item.Id })
+            @Html.ActionLink(" ", "Edit", new { id=item.Id }, new { @class = "glyphicon glyphicon-edit" }) |
+            @Html.ActionLink(" ", "Details", new { id=item.Id }, new { @class = "glyphicon glyphicon-info-sign" }) |
+            @Html.ActionLink(" ", "CheckOut", new { id=item.Id }, new { @class = "glyphicon glyphicon-road" })
         </td>
     </tr>
 }

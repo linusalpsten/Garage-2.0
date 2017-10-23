@@ -7,6 +7,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 100px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +22,16 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+@media (min-width: 768px) {
+
+    .navbar-nav {
+        float:right;
+        padding-top:45px;
+    }
+}
+
+.glyphicon {
+    color: black;
 }
