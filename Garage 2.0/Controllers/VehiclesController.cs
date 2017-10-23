@@ -121,6 +121,9 @@ namespace Garage_2._0.Controllers
         {
             if (ModelState.IsValid)
             {
+                var oldVehicle = db.Vehicles.AsNoTracking().Where(v => v.Id == vehicle.Id).ToList()[0];
+
+                vehicle.CheckInTime = oldVehicle.CheckInTime;
                 db.Entry(vehicle).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
