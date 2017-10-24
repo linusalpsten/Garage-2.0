@@ -15,6 +15,8 @@ namespace Garage_2._0.Controllers
 {
     public class VehiclesController : Controller
     {
+        private static int garageCapacity = 8;
+
         private VehicleContext db = new VehicleContext();
 
         // GET: Vehicles
@@ -116,7 +118,8 @@ namespace Garage_2._0.Controllers
             {
                 return HttpNotFound();
             }
-            var vehicleItem = new VehicleDetails {
+            var vehicleItem = new VehicleDetails
+            {
                 Id = vehicle.Id,
                 Model = vehicle.Model,
                 Brand = vehicle.Brand,
@@ -140,21 +143,28 @@ namespace Garage_2._0.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CheckIn([Bind(Include = "Id,RegistrationNumber,Color,Brand,Model,NumberOfWheels")] Vehicle vehicleData)
         {
-            if (ModelState.IsValid)
+            if (db.Vehicles.ToList().Count <= garageCapacity)
             {
-                var vehicle = new Vehicle
+                if (ModelState.IsValid)
                 {
-                    Id = vehicleData.Id,
-                    RegistrationNumber = vehicleData.RegistrationNumber,
-                    Brand = vehicleData.Brand,
-                    Color = vehicleData.Color,
-                    Model = vehicleData.Model,
-                    NumberOfWheels = vehicleData.NumberOfWheels,
-                    CheckInTime = DateTime.Now
-                };
-                db.Vehicles.Add(vehicle);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    var vehicle = new Vehicle
+                    {
+                        Id = vehicleData.Id,
+                        RegistrationNumber = vehicleData.RegistrationNumber,
+                        Brand = vehicleData.Brand,
+                        Color = vehicleData.Color,
+                        Model = vehicleData.Model,
+                        NumberOfWheels = vehicleData.NumberOfWheels,
+                        CheckInTime = DateTime.Now
+                    };
+                    db.Vehicles.Add(vehicle);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            else
+            {
+                ViewBag.Message = "The Garage is full.";
             }
 
             return View(vehicleData);
