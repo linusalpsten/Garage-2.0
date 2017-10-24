@@ -1,0 +1,52 @@
+﻿@model Garage_2._0.ViewModels.Statistics
+
+@{
+    ViewBag.Title = "Statistics";
+    
+}
+
+<h2>Statistics</h2>
+
+<div>
+    <h4>Statistics</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @foreach (KeyValuePair<Garage_2._0.Enums.Model, int> item in Model.VehiclesOfEachType)
+        {
+            <dt>
+                @item.Key
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.Value)
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.NrOfWheels)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NrOfWheels)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalParkingPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalParkingPrice)
+        </dd>
+        @foreach (KeyValuePair<Garage_2._0.Enums.Brand, int> item in Model.NrOfEachBrand)
+        {
+            <dt>
+                @item.Key
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.Value)
+            </dd>
+        }
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
