@@ -153,6 +153,7 @@
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Kvitto.cs" />
+    <Compile Include="ViewModels\Statistics.cs" />
     <Compile Include="ViewModels\VehicleDetails.cs" />
     <Compile Include="ViewModels\VehicleIndex.cs" />
   </ItemGroup>

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Garage_2._0.DataAccess;
 using Garage_2._0.Models;
 using Garage_2._0.ViewModels;
+using Garage_2._0.Enums;
 
 namespace Garage_2._0.Controllers
 {
@@ -27,6 +28,44 @@ namespace Garage_2._0.Controllers
                 Model = v.Model
             });
             return View(vehicleItems);
+        }
+
+        public ActionResult Statistics()
+        {
+            return View(GetStats());
+        }
+
+        private Statistics GetStats()
+        {
+            var stats = new Statistics();
+            var vehicles = db.Vehicles;
+
+            stats.VehiclesOfEachType = vehicles
+                .GroupBy(v => v.Model)
+                .Select(m => new { Model = m.Key, Count = m.Count() })
+                .ToDictionary(v => v.Model, v => v.Count);
+
+            var wheelQuery = vehicles.Select(v => new { v.NumberOfWheels });
+            int nrOfWheels = 0;
+            foreach (var item in wheelQuery)
+            {
+                nrOfWheels += item.NumberOfWheels;
+            }
+            stats.NrOfWheels = nrOfWheels;
+
+            double totalPrice = 0;
+            var timeQuery = vehicles.Select(v => new { v.CheckInTime });
+            foreach (var item in timeQuery)
+            {
+                totalPrice += Math.Round(DateTime.Now.Subtract(item.CheckInTime).TotalHours * 75, 2);
+            }
+            stats.TotalParkingPrice = totalPrice;
+
+            stats.NrOfEachBrand = vehicles
+                .GroupBy(v => v.Brand)
+                .Select(m => new { Brand = m.Key, Count = m.Count() })
+                .ToDictionary(v => v.Brand, v => v.Count);
+            return stats;
         }
 
         public ActionResult Find(string SearchString)
