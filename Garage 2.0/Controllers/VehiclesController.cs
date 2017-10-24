@@ -15,7 +15,7 @@ namespace Garage_2._0.Controllers
 {
     public class VehiclesController : Controller
     {
-        private static int garageCapacity = 8;
+        private static int garageCapacity = 2;
 
         private VehicleContext db = new VehicleContext();
 
@@ -145,7 +145,7 @@ namespace Garage_2._0.Controllers
         {
             if (db.Vehicles.ToList().Count <= garageCapacity)
             {
-                ViewBag.IsFull = false;
+                
                 if (ModelState.IsValid)
                 {
                     var vehicle = new Vehicle
@@ -165,7 +165,7 @@ namespace Garage_2._0.Controllers
             }
             else
             {
-                ViewBag.IsFull = true;
+                ViewBag.IsFull = "true";
             }
 
             return View(vehicleData);
