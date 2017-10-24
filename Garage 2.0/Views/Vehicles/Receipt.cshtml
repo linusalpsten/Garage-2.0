@@ -6,51 +6,53 @@
 
 <h2>Receipt</h2>
 
-<div class="panel panel-default">
-    <div class="panel-heading">Kvitto</div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.RegistrationNumber)
-        </dt>
+<div class="row">
+    <div class="well well-lg col-lg-4">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.RegistrationNumber)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.RegistrationNumber)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.RegistrationNumber)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckInTime)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckInTime)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CheckInTime)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CheckInTime)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckOutTime)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckOutTime)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CheckOutTime)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CheckOutTime)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ParkeringsPeriod)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ParkeringsPeriod)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ParkeringsPeriod)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ParkeringsPeriod)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TotalPrice)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TotalPrice)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.TotalPrice)
+            </dd>
 
-    </dl>
+        </dl>
+    </div>
 </div>
+
 <p>
     @Html.ActionLink("Back to List", "Index")
 </p>
