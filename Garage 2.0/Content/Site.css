@@ -35,3 +35,15 @@ textarea {
 .glyphicon {
     color: black;
 }
+
+p {
+    margin: 10px 0 10px;
+}
+
+.input-group-btn {
+    width:auto;
+}
+
+.table {
+    margin:0;
+}
