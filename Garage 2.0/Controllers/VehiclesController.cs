@@ -31,7 +31,31 @@ namespace Garage_2._0.Controllers
 
         public ActionResult Find(string SearchString)
         {
-            List<Vehicle> vehicles = db.Vehicles.Where(v => v.RegistrationNumber == SearchString).ToList();
+            List<Vehicle> vehicles = db.Vehicles.Where(v => v.RegistrationNumber.Contains(SearchString)).ToList();
+            var vehicleItems = vehicles.Select(v => new VehicleIndex
+            {
+                Id = v.Id,
+                RegistrationNumber = v.RegistrationNumber,
+                Model = v.Model
+            });
+            return View("Index", vehicleItems);
+        }
+
+        public ActionResult RegNr()
+        {
+            List<Vehicle> vehicles = db.Vehicles.OrderBy(v => v.RegistrationNumber).ToList();
+            var vehicleItems = vehicles.Select(v => new VehicleIndex
+            {
+                Id = v.Id,
+                RegistrationNumber = v.RegistrationNumber,
+                Model = v.Model
+            });
+            return View("Index", vehicleItems);
+        }
+
+        public ActionResult Model()
+        {
+            List<Vehicle> vehicles = db.Vehicles.OrderBy(v => v.Model).ToList();
             var vehicleItems = vehicles.Select(v => new VehicleIndex
             {
                 Id = v.Id,
