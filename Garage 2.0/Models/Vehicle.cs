@@ -22,5 +22,6 @@ namespace Garage_2._0.Models
         [DisplayName("Number of Wheels")]
         public int NumberOfWheels { get; set; }
         public DateTime CheckInTime { get; set; }
+        public int ParkingSpot { get; set; }
     }
 }

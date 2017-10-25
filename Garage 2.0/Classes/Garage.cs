@@ -90,6 +90,34 @@ namespace Garage_2._0.Classes
             return true;
         }
 
+        public bool UnParkVehicle(Vehicle vehicle)
+        {
+            int size = SizeDictionary[vehicle.Model];
+            int parkingSpaceNeeded = getSpaceNeeded(size);
+            int index = parkingSpaces.FindIndex(x =>
+                x.ParkedVehicles.Find(y => y.Id == vehicle.Id)
+                !=
+                null
+                );
+            if (index == -1)
+            {
+                return false;
+            }
+            for (int i = 0; i < parkingSpaceNeeded; i++)
+            {
+                if (size > 3)
+                {
+                    size -= 3;
+                    parkingSpaces[index + i].UnParkVehicle(vehicle, 3);
+                }
+                else
+                {
+                    parkingSpaces[index + i].UnParkVehicle(vehicle, 3);
+                }
+            }
+            return true;
+        }
+
         private int findspace(int size)
         {
             Predicate<ParkingSpace> test = x => x.SpaceLeft == 3;
