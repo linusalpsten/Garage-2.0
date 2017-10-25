@@ -20,9 +20,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/Vehicles" class="navbar-brand"> <img src="~/Images/parking-sign.png" class="img-responsive" alt="Logo" width="100" height="50" /> </a>
+                <div class="small hidden-xs">
+                    <a href="/Vehicles" class="navbar-brand"> <img src="~/Images/parking-sign.png" class="img-responsive" alt="Logo" width="100" height="50" /> </a>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
+            <div id="navbar1" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Garage statistics", "Statistics", "Vehicles", new { @class = "btn btn-default" })</li> 
                     <li>@Html.ActionLink("Garage", "Index", "Vehicles", new { @class = "btn btn-default" })</li>
