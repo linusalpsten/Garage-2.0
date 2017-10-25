@@ -15,7 +15,7 @@ namespace Garage_2._0.Controllers
 {
     public class VehiclesController : Controller
     {
-        private static int garageCapacity = 2;
+        private static int garageCapacity = 5;
 
         private VehicleContext db = new VehicleContext();
 
