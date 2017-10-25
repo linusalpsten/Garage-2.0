@@ -11,20 +11,21 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <div class="container">
+    <div class="navbar navbar-default">
+        
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/Vehicles" class="navbar-brand"> <img src="~/Images/parking-sign.png" alt="Logo" width="150" height="100" /> </a>
+                <a href="/Vehicles" class="navbar-brand"> <img src="~/Images/parking-sign.png" class="img-responsive" alt="Logo" width="100" height="50" /> </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Statistics", "Statistics", "Vehicles")</li>
-                    <li>@Html.ActionLink("Vehicle", "Index", "Vehicles")</li>
+                    <li>@Html.ActionLink("Garage statistics", "Statistics", "Vehicles", new { @class = "btn btn-default" })</li> 
+                    <li>@Html.ActionLink("Garage", "Index", "Vehicles", new { @class = "btn btn-default" })</li>
                 </ul>
             </div>
         </div>

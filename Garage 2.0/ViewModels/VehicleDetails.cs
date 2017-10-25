@@ -14,6 +14,7 @@ namespace Garage_2._0.ViewModels
         public string RegistrationNumber { get; set; }
         public Color Color { get; set; }
         public Brand Brand { get; set; }
+        [DisplayName("Type of Vehicle")]
         public Model Model { get; set; }
         [DisplayName("Check In Time")]
         public DateTime CheckInTime { get; set; }

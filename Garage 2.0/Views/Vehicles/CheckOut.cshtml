@@ -4,69 +4,64 @@
     ViewBag.Title = "Check Out";
 }
 
-<h2>Check Out</h2>
-
-<h3>Are you sure you want to check out this vehicle?</h3>
-<div>
-    <hr />
-    <dl class="dl-horizontal" style="margin-bottom:0px;">
-        <dt>
-            @Html.DisplayNameFor(model => model.RegistrationNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RegistrationNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Color)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Brand)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Model)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Model)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckInTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CheckInTime)
-        </dd>
-
-        
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-        <dl class="dl-horizontal" style="margin-top:0px;">
+<div class="well well-lg">    
+            <h3>Check out</h3>
+        <dl class="dl-horizontal" style="margin-bottom:0px;">
             <dt>
-                Receipt?
+                @Html.DisplayNameFor(model => model.RegistrationNumber)
             </dt>
+
             <dd>
-                @Html.CheckBox("receipt")
+                @Html.DisplayFor(model => model.RegistrationNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Color)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Color)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Brand)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Brand)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Model)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Model)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckInTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CheckInTime)
             </dd>
         </dl>
-        <div class="form-actions no-color">
-            <input type="submit" value="CheckOut" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
-        </div>
-    }
-</div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <dl class="dl-horizontal" style="margin-top:0px;">
+                <dt>
+                    Receipt?
+                </dt>
+                <dd>
+                    @Html.CheckBox("receipt")
+                </dd>
+            </dl>
+            <div class="form-actions no-color">
+                <input type="submit" value="CheckOut" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        }
+    </div>

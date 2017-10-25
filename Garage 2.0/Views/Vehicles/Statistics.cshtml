@@ -5,11 +5,10 @@
     
 }
 
-<h2>Statistics</h2>
+<div class="well well-lg">
 
-<div>
-    <h4>Statistics</h4>
-    <hr />
+        <h2>Statistics</h2>
+
     <dl class="dl-horizontal">
         @foreach (KeyValuePair<Garage_2._0.Enums.Model, int> item in Model.VehiclesOfEachType)
         {
@@ -47,6 +46,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
 </p>

@@ -12,6 +12,7 @@ namespace Garage_2._0.ViewModels
         public int Id { get; set; }
         [DisplayName("Registration Number")]
         public string RegistrationNumber { get; set; }
+        [DisplayName("Type of Vehicle")]
         public Model Model { get; set; }
     }
 }
