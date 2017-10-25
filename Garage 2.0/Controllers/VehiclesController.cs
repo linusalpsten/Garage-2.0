@@ -10,12 +10,20 @@ using Garage_2._0.DataAccess;
 using Garage_2._0.Models;
 using Garage_2._0.ViewModels;
 using Garage_2._0.Enums;
+using Garage_2._0.Classes;
 
 namespace Garage_2._0.Controllers
 {
     public class VehiclesController : Controller
     {
-        private static int garageCapacity = 5;
+        private static int garageCapacity = 20;
+        private Garage garage;
+
+        public VehiclesController() : base()
+        {
+            garage = new Garage(garageCapacity);
+            var vehicles = db.Vehicles;
+        }
 
         private VehicleContext db = new VehicleContext();
 

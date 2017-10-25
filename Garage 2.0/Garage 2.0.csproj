@@ -151,6 +151,10 @@
     <Compile Include="Migrations\201710231043009_change_name_parkingtime.Designer.cs">
       <DependentUpon>201710231043009_change_name_parkingtime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710251057286_add_parkingspot.cs" />
+    <Compile Include="Migrations\201710251057286_add_parkingspot.Designer.cs">
+      <DependentUpon>201710251057286_add_parkingspot.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -224,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710231043009_change_name_parkingtime.resx">
       <DependentUpon>201710231043009_change_name_parkingtime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710251057286_add_parkingspot.resx">
+      <DependentUpon>201710251057286_add_parkingspot.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
