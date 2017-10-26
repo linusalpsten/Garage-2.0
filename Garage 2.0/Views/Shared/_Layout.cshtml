@@ -9,11 +9,12 @@
     <title>@ViewBag.Title - @ViewBag.ApplicationName</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
 </head>
 <body>
     <div class="container">
-    <div class="navbar navbar-default">
-        
+        <div class="navbar navbar-default">
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -26,7 +27,7 @@
             </div>
             <div id="navbar1" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Garage statistics", "Statistics", "Vehicles", new { @class = "btn btn-default" })</li> 
+                    <li>@Html.ActionLink("Garage statistics", "Statistics", "Vehicles", new { @class = "btn btn-default" })</li>
                     <li>@Html.ActionLink("Garage", "Index", "Vehicles", new { @class = "btn btn-default" })</li>
                 </ul>
             </div>
