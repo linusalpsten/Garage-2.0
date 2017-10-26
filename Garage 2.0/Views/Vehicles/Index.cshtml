@@ -22,12 +22,14 @@
     {
         <div class="alert alert-danger" role="alert">
             <h4 class="alert-heading">Garage is full</h4>
-            <p>Go to a another garage</p>
         </div>
     }
     else
     {
-        @ViewBag.ParkingSpaceString;
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">@ViewBag.ParkingSpaceString</h4>
+        </div>
+       
     }
     </p>
 
