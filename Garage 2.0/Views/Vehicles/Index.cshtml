@@ -51,39 +51,36 @@
             }
         </div>
 
-        <table class="table table-hover sortable">
-            <thead>
-                <tr>
-                    <th id="RegNrLabel">
-                        @Html.DisplayNameFor(model => model.RegistrationNumber)
-                    </th>
-                    <th id="ModelLabel">
-                        @Html.DisplayNameFor(model => model.Model)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
+    <table class="table table-hover sortable">
+        <thead>
+            <tr>
+                <th data-defaultsort="desc">
+                    @Html.DisplayNameFor(model => model.RegistrationNumber)
+                </th>
+                <th data-defaultsort="desc">
+                    @Html.DisplayNameFor(model => model.Model)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
             {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.RegistrationNumber)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Model)
-                        </td>
-                        <td>
-                            @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "glyphicon glyphicon-edit", title = "Edit" }) |
-                            @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "glyphicon glyphicon-info-sign", title = "Details" }) |
-                            @Html.ActionLink(" ", "CheckOut", new { id = item.Id }, new { @class = "glyphicon glyphicon-road", title = "CheckOut" })
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-        <div class="panel-footer"></div>
-    </div>
-
-    @Html.ActionLink(" ", "RegNr", null, new { @id = "RegNr", @style = "display:none;" })
-    @Html.ActionLink(" ", "Model", null, new { @id = "Model", @style = "display:none;" })
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RegistrationNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Model)
+                    </td>
+                    <td>
+                        @Html.ActionLink(" ", "CheckOut", new { id = item.Id }, new { @class = "glyphicon glyphicon-road", id = "buttons", title = "CheckOut" })
+                        @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "glyphicon glyphicon-info-sign", id = "buttons", title = "Details" })
+                        @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "glyphicon glyphicon-edit", id = "buttons", title = "Edit" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+</table>
+    <div class="panel-footer"></div>
+</div>
