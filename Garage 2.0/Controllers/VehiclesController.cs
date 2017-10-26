@@ -21,8 +21,7 @@ namespace Garage_2._0.Controllers
 
         public VehiclesController() : base()
         {
-            garage = new Garage(garageCapacity);
-            var vehicles = db.Vehicles;
+
         }
 
         private VehicleContext db = new VehicleContext();
@@ -30,6 +29,7 @@ namespace Garage_2._0.Controllers
         // GET: Vehicles
         public ActionResult Index()
         {
+            ViewBag.SpaceLeft = garageCapacity - db.Vehicles.Count();
             List<Vehicle> vehicles = db.Vehicles.ToList();
             var vehicleItems = vehicles.Select(v => new VehicleIndex
             {
@@ -80,6 +80,7 @@ namespace Garage_2._0.Controllers
 
         public ActionResult Find(string SearchString)
         {
+            ViewBag.SpaceLeft = garageCapacity - db.Vehicles.Count();
             List<Vehicle> vehicles = db.Vehicles.Where(v => v.RegistrationNumber.Contains(SearchString)).ToList();
             var vehicleItems = vehicles.Select(v => new VehicleIndex
             {
@@ -92,6 +93,7 @@ namespace Garage_2._0.Controllers
 
         public ActionResult RegNr()
         {
+            ViewBag.SpaceLeft = garageCapacity - db.Vehicles.Count();
             List<Vehicle> vehicles = db.Vehicles.OrderBy(v => v.RegistrationNumber).ToList();
             var vehicleItems = vehicles.Select(v => new VehicleIndex
             {
@@ -104,6 +106,7 @@ namespace Garage_2._0.Controllers
 
         public ActionResult Model()
         {
+            ViewBag.SpaceLeft = garageCapacity - db.Vehicles.Count();
             List<Vehicle> vehicles = db.Vehicles.OrderBy(v => v.Model).ToList();
             var vehicleItems = vehicles.Select(v => new VehicleIndex
             {
