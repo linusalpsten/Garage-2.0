@@ -23,13 +23,7 @@ textarea {
     max-width: 280px;
 }
 
-@media (min-width: 768px) {
 
-    .navbar-nav {
-        float:right;
-        padding-top:13px;
-    }
-}
 li {
     margin:10px;
 }
@@ -87,15 +81,20 @@ dl {
     }
 }
 
+.panel {
+    margin-top:20px;
+}
+
 @media (min-width: 768px) {
 
+    .navbar-nav {
+        float:right;
+        padding-top:13px;
+    }
+ 
     .container .navbar
     {
-        
         margin: 0 auto;
     }
 }
 
-.panel {
-    margin-top:20px;
-}
