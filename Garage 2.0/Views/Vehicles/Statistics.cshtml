@@ -5,9 +5,8 @@
     
 }
 
-<div class="jumbotron">
-
-<div id="stats">
+<div class="well well-lg">
+    <h2>Statistics</h2>
     <dl class="dl-horizontal">
         @foreach (KeyValuePair<Garage_2._0.Enums.Model, int> item in Model.VehiclesOfEachType)
         {
@@ -44,7 +43,6 @@
         }
     </dl>
 </div>
-    </div>
 <p>
     @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
 </p>
