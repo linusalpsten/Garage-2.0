@@ -63,8 +63,26 @@ dl {
     margin-left: 20px;
 }
 
+#stats {
+    font-family: 'Burned Letters by  Marta van Eck';
+    margin-top:200px;
+    margin-left:650px;
+    color:black;
+    font-weight:bold;
+    transform:skewY(8deg);
+}
+@font-face {
+    font-family: 'Drift___';
+    src: url('../fonts/Drift___.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Burned Letters by  Marta van Eck';
+    src: url('../fonts/Burned Letters by  Marta van Eck.ttf') format('truetype');
+}
 .form-horizontal .form-group {
     margin-top:20px;
+    margin-left:15px;
+    margin-right:5px;
 }
 
 .form-horizontal {
@@ -98,3 +116,25 @@ dl {
     }
 }
 
+@media (min-width: 992px) {
+    .col-md-2 {
+            padding-left: 3px;
+            padding-right:10px;
+    }
+}
+
+#buttons {
+    float:right;
+    margin:5px;
+}
+
+.jumbotron {
+    margin-top:20px;
+    position: relative;
+    background: #000 url('/Images/Nice.jpg') center center;
+    width: 100%;
+    height: 600px;
+    background-size: cover;
+    overflow: hidden;
+    box-shadow: 10px 10px 5px #888888;
+}
