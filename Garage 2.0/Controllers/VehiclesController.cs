@@ -154,7 +154,7 @@ namespace Garage_2._0.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CheckIn([Bind(Include = "Id,RegistrationNumber,Color,Brand,Model,NumberOfWheels")] Vehicle vehicleData)
         {
-            if (db.Vehicles.ToList().Count <= garageCapacity)
+            if (db.Vehicles.ToList().Count < garageCapacity)
             {
                 
                 if (ModelState.IsValid)
