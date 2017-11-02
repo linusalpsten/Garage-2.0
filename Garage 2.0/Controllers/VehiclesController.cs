@@ -34,6 +34,8 @@ namespace Garage_2._0.Controllers
             var vehicleItems = vehicles.Select(v => new VehicleIndex
             {
                 Id = v.Id,
+                Owner = v.Member.FullName,
+                CheckInTime = v.CheckInTime,
                 RegistrationNumber = v.RegistrationNumber,
                 Type = v.Type
             });

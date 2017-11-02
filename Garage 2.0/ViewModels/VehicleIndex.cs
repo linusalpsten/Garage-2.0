@@ -11,6 +11,8 @@ namespace Garage_2._0.ViewModels
     public class VehicleIndex
     {
         public int Id { get; set; }
+        public string Owner { get; set; }
+        public DateTime CheckInTime { get; set; }
         [DisplayName("Registration Number")]
         public string RegistrationNumber { get; set; }
         [DisplayName("Type of Vehicle")]
