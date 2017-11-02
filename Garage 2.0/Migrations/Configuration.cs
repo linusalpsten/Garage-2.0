@@ -54,10 +54,10 @@ namespace Garage_2._0.Migrations
 
             context.Vehicles.AddOrUpdate(
                 p => p.RegistrationNumber,
-                new Vehicle { RegistrationNumber = "abc123", Brand = Enums.Brand.Ford, Color = Enums.Color.Black, TypeId = types[0], NumberOfWheels = 4, CheckInTime = DateTime.Now, MemberId = members[0]},
-                new Vehicle { RegistrationNumber = "bcd234", Brand = Enums.Brand.Opel, Color = Enums.Color.Blue, TypeId = types[0], NumberOfWheels = 4, CheckInTime = DateTime.Now, MemberId = members[1] },
-                new Vehicle { RegistrationNumber = "cde345", Brand = Enums.Brand.Renault, Color = Enums.Color.Green, TypeId = types[0], NumberOfWheels = 4, CheckInTime = DateTime.Now, MemberId = members[1] },
-                new Vehicle { RegistrationNumber = "def456", Brand = Enums.Brand.Tesla, Color = Enums.Color.Red, TypeId = types[0], NumberOfWheels = 1, CheckInTime = DateTime.Now, MemberId = members[0] }
+                new Vehicle { RegistrationNumber = "abc123", Brand = Enums.Brand.Ford, Color = Enums.Color.Black, TypeId = types[0].Id, NumberOfWheels = 4, CheckInTime = DateTime.Now, MemberId = members[0].Id},
+                new Vehicle { RegistrationNumber = "bcd234", Brand = Enums.Brand.Opel, Color = Enums.Color.Blue, TypeId = types[0].Id, NumberOfWheels = 4, CheckInTime = DateTime.Now, MemberId = members[1].Id },
+                new Vehicle { RegistrationNumber = "cde345", Brand = Enums.Brand.Renault, Color = Enums.Color.Green, TypeId = types[0].Id, NumberOfWheels = 4, CheckInTime = DateTime.Now, MemberId = members[1].Id },
+                new Vehicle { RegistrationNumber = "def456", Brand = Enums.Brand.Tesla, Color = Enums.Color.Red, TypeId = types[0].Id, NumberOfWheels = 1, CheckInTime = DateTime.Now, MemberId = members[0].Id }
                 );
         }
     }
