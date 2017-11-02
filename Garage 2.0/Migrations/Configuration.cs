@@ -27,24 +27,37 @@ namespace Garage_2._0.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            context.Vehicles.AddOrUpdate(
-                p => p.RegistrationNumber,
-                new Vehicle { RegistrationNumber = "abc123", Brand = Enums.Brand.Ford, Color = Enums.Color.Black, Model = Enums.Model.Car, NumberOfWheels = 4, CheckInTime = DateTime.Now },
-                new Vehicle { RegistrationNumber = "bcd234", Brand = Enums.Brand.Opel, Color = Enums.Color.Blue, Model = Enums.Model.Car, NumberOfWheels = 4, CheckInTime = DateTime.Now },
-                new Vehicle { RegistrationNumber = "cde345", Brand = Enums.Brand.Renault, Color = Enums.Color.Green, Model = Enums.Model.Car, NumberOfWheels = 4, CheckInTime = DateTime.Now }
-                );
-
-            context.Types.AddOrUpdate(
-                t => t.Type,
+            var types = new[] 
+            {
                 new VehicleType { Type = "Car" },
                 new VehicleType { Type = "Buss" },
                 new VehicleType { Type = "Motorcycle" }
+            };
+
+            var members = new[]
+            {
+                new Member { FirstName = "Linus", LastName = "Alpsten" },
+                new Member { FirstName = "Rolf", LastName = "Lundqvist" }
+            };
+
+            context.Types.AddOrUpdate(
+                t => t.Type,
+                types
                 );
 
             context.Members.AddOrUpdate(
-                m => m.FirstName + m.LastName,
-                new Member { FirstName = "Linus", LastName = "Alpsten" },
-                new Member { FirstName = "Rolf", LastName = "Lundqvist" }
+                m => new { m.FirstName, m.LastName },
+                members
+                );
+
+            context.SaveChanges();
+
+            context.Vehicles.AddOrUpdate(
+                p => p.RegistrationNumber,
+                new Vehicle { RegistrationNumber = "abc123", Brand = Enums.Brand.Ford, Color = Enums.Color.Black, TypeId = types[0], NumberOfWheels = 4, CheckInTime = DateTime.Now, MemberId = members[0]},
+                new Vehicle { RegistrationNumber = "bcd234", Brand = Enums.Brand.Opel, Color = Enums.Color.Blue, TypeId = types[0], NumberOfWheels = 4, CheckInTime = DateTime.Now, MemberId = members[1] },
+                new Vehicle { RegistrationNumber = "cde345", Brand = Enums.Brand.Renault, Color = Enums.Color.Green, TypeId = types[0], NumberOfWheels = 4, CheckInTime = DateTime.Now, MemberId = members[1] },
+                new Vehicle { RegistrationNumber = "def456", Brand = Enums.Brand.Tesla, Color = Enums.Color.Red, TypeId = types[0], NumberOfWheels = 1, CheckInTime = DateTime.Now, MemberId = members[0] }
                 );
         }
     }
