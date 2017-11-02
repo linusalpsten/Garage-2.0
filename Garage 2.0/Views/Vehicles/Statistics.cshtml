@@ -11,7 +11,7 @@
         @foreach (KeyValuePair<Garage_2._0.Models.VehicleType, int> item in Model.VehiclesOfEachType)
         {
             <dt>
-                @item.Key
+                @item.Key.Type
             </dt>
             <dd>
                 @Html.DisplayFor(model => item.Value)
