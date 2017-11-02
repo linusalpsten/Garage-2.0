@@ -23,6 +23,8 @@ namespace Garage_2._0.Models
         public int NumberOfWheels { get; set; }
         public DateTime CheckInTime { get; set; }
         public int ParkingSpot { get; set; }
+        public int MemberId { get; set; }
+        public int TypeId { get; set; }
 
         public virtual VehicleType Type { get; set; }
         public virtual Member Member { get; set; }
