@@ -198,7 +198,17 @@ namespace Garage_2._0.Controllers
             {
                 return HttpNotFound();
             }
-            return View(vehicle);
+            var viewModel = new CheckInVM()
+            {
+                Id = vehicle.Id,
+                RegistrationNumber = vehicle.RegistrationNumber,
+                Color = vehicle.Color,
+                Brand = vehicle.Brand,
+                NumberOfWheels = vehicle.NumberOfWheels,
+                Types = db.Types.ToList(),
+                Members = db.Members.ToList()
+            };
+            return View(viewModel);
         }
 
         // POST: Vehicles/Edit/5
@@ -206,18 +216,28 @@ namespace Garage_2._0.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,RegistrationNumber,Color,Brand,Model,NumberOfWheels")] Vehicle vehicle)
+        public ActionResult Edit([Bind(Include = "Id,RegistrationNumber,Color,Brand,TypeId,MemberId,NumberOfWheels")] Vehicle vehicleData)
         {
             if (ModelState.IsValid)
             {
-                var oldVehicle = db.Vehicles.AsNoTracking().Where(v => v.Id == vehicle.Id).ToList()[0];
+                var oldVehicle = db.Vehicles.AsNoTracking().Where(v => v.Id == vehicleData.Id).ToList()[0];
 
-                vehicle.CheckInTime = oldVehicle.CheckInTime;
+                var vehicle = new Vehicle
+                {
+                    Id = vehicleData.Id,
+                    RegistrationNumber = vehicleData.RegistrationNumber,
+                    Brand = vehicleData.Brand,
+                    Color = vehicleData.Color,
+                    TypeId = vehicleData.TypeId,
+                    MemberId = vehicleData.MemberId,
+                    NumberOfWheels = vehicleData.NumberOfWheels,
+                    CheckInTime = oldVehicle.CheckInTime
+                };
                 db.Entry(vehicle).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(vehicle);
+            return View(vehicleData);
         }
 
         // GET: Vehicles/Delete/5
