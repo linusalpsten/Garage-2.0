@@ -33,6 +33,19 @@ namespace Garage_2._0.Migrations
                 new Vehicle { RegistrationNumber = "bcd234", Brand = Enums.Brand.Opel, Color = Enums.Color.Blue, Model = Enums.Model.Car, NumberOfWheels = 4, CheckInTime = DateTime.Now },
                 new Vehicle { RegistrationNumber = "cde345", Brand = Enums.Brand.Renault, Color = Enums.Color.Green, Model = Enums.Model.Car, NumberOfWheels = 4, CheckInTime = DateTime.Now }
                 );
+
+            context.Types.AddOrUpdate(
+                t => t.Type,
+                new VehicleType { Type = "Car" },
+                new VehicleType { Type = "Buss" },
+                new VehicleType { Type = "Motorcycle" }
+                );
+
+            context.Members.AddOrUpdate(
+                m => m.FirstName + m.LastName,
+                new Member { FirstName = "Linus", LastName = "Alpsten" },
+                new Member { FirstName = "Rolf", LastName = "Lundqvist" }
+                );
         }
     }
 }
