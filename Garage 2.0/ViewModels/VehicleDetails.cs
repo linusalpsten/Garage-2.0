@@ -1,4 +1,5 @@
 ﻿using Garage_2._0.Enums;
+using Garage_2._0.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,7 @@ namespace Garage_2._0.ViewModels
         public Color Color { get; set; }
         public Brand Brand { get; set; }
         [DisplayName("Type of Vehicle")]
-        public Model Model { get; set; }
+        public VehicleType Type { get; set; }
         [DisplayName("Check In Time")]
         public DateTime CheckInTime { get; set; }
     }

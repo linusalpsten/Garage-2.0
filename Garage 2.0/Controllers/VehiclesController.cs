@@ -35,7 +35,7 @@ namespace Garage_2._0.Controllers
             {
                 Id = v.Id,
                 RegistrationNumber = v.RegistrationNumber,
-                Model = v.Model
+                Type = v.Type
             });
             return View(vehicleItems);
         }
@@ -51,9 +51,9 @@ namespace Garage_2._0.Controllers
             var vehicles = db.Vehicles;
 
             stats.VehiclesOfEachType = vehicles
-                .GroupBy(v => v.Model)
-                .Select(m => new { Model = m.Key, Count = m.Count() })
-                .ToDictionary(v => v.Model, v => v.Count);
+                .GroupBy(v => v.Type)
+                .Select(m => new { Type = m.Key, Count = m.Count() })
+                .ToDictionary(v => v.Type, v => v.Count);
 
             var wheelQuery = vehicles.Select(v => new { v.NumberOfWheels });
             int nrOfWheels = 0;
@@ -86,7 +86,7 @@ namespace Garage_2._0.Controllers
             {
                 Id = v.Id,
                 RegistrationNumber = v.RegistrationNumber,
-                Model = v.Model
+                Type = v.Type
             });
             return View("Index", vehicleItems);
         }
@@ -99,7 +99,7 @@ namespace Garage_2._0.Controllers
             {
                 Id = v.Id,
                 RegistrationNumber = v.RegistrationNumber,
-                Model = v.Model
+                Type = v.Type
             });
             return View("Index", vehicleItems);
         }
@@ -107,12 +107,12 @@ namespace Garage_2._0.Controllers
         public ActionResult Model()
         {
             ViewBag.SpaceLeft = garageCapacity - db.Vehicles.Count();
-            List<Vehicle> vehicles = db.Vehicles.OrderBy(v => v.Model).ToList();
+            List<Vehicle> vehicles = db.Vehicles.OrderBy(v => v.Type).ToList();
             var vehicleItems = vehicles.Select(v => new VehicleIndex
             {
                 Id = v.Id,
                 RegistrationNumber = v.RegistrationNumber,
-                Model = v.Model
+                Type = v.Type
             });
             return View("Index", vehicleItems);
         }
@@ -132,7 +132,7 @@ namespace Garage_2._0.Controllers
             var vehicleItem = new VehicleDetails
             {
                 Id = vehicle.Id,
-                Model = vehicle.Model,
+                Type = vehicle.Type,
                 Brand = vehicle.Brand,
                 Color = vehicle.Color,
                 CheckInTime = vehicle.CheckInTime,
@@ -144,7 +144,10 @@ namespace Garage_2._0.Controllers
         // GET: Vehicles/Create
         public ActionResult CheckIn()
         {
-            return View();
+            var viewModel = new CheckInVM();
+            viewModel.Types = db.Types.ToList();
+            viewModel.Members = db.Members.ToList();
+            return View(viewModel);
         }
 
         // POST: Vehicles/Create
@@ -152,7 +155,7 @@ namespace Garage_2._0.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CheckIn([Bind(Include = "Id,RegistrationNumber,Color,Brand,Model,NumberOfWheels")] Vehicle vehicleData)
+        public ActionResult CheckIn([Bind(Include = "Id,RegistrationNumber,Color,Brand,TypeId,MemberId,NumberOfWheels")] Vehicle vehicleData)
         {
             if (db.Vehicles.ToList().Count < garageCapacity)
             {
@@ -165,7 +168,8 @@ namespace Garage_2._0.Controllers
                         RegistrationNumber = vehicleData.RegistrationNumber,
                         Brand = vehicleData.Brand,
                         Color = vehicleData.Color,
-                        Model = vehicleData.Model,
+                        TypeId = vehicleData.TypeId,
+                        MemberId = vehicleData.MemberId,
                         NumberOfWheels = vehicleData.NumberOfWheels,
                         CheckInTime = DateTime.Now
                     };
@@ -231,7 +235,7 @@ namespace Garage_2._0.Controllers
             var vehicleItem = new VehicleDetails
             {
                 Id = vehicle.Id,
-                Model = vehicle.Model,
+                Type = vehicle.Type,
                 Brand = vehicle.Brand,
                 Color = vehicle.Color,
                 CheckInTime = vehicle.CheckInTime,

@@ -1,4 +1,5 @@
 ﻿using Garage_2._0.Enums;
+using Garage_2._0.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,6 @@ namespace Garage_2._0.ViewModels
         [DisplayName("Registration Number")]
         public string RegistrationNumber { get; set; }
         [DisplayName("Type of Vehicle")]
-        public Model Model { get; set; }
+        public VehicleType Type { get; set; }
     }
 }

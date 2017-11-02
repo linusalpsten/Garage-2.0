@@ -1,4 +1,4 @@
-﻿@model Garage_2._0.Models.Vehicle
+﻿@model Garage_2._0.ViewModels.CheckInVM
 
 @{
     ViewBag.Title = "Check In";
@@ -13,7 +13,7 @@
     </div>
 }
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
@@ -47,10 +47,19 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Types, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Model, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
+                @*@Html.EnumDropDownListFor(model => model.Type, new { @class = "form-control" })*@
+                @Html.DropDownListFor(m => Model.TypeId, new SelectList(Model.Types, "Id", "Type"), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Types, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Members, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => Model.MemberId, new SelectList(Model.Members, "Id", "FullName"), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Types, "", new { @class = "text-danger" })
             </div>
         </div>
 
