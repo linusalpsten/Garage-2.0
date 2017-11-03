@@ -29,8 +29,8 @@ namespace Garage_2._0.Controllers
         // GET: Vehicles
         public ActionResult Index()
         {
-            ViewBag.SpaceLeft = garageCapacity - db.Vehicles.Count();
             List<Vehicle> vehicles = db.Vehicles.ToList();
+            ViewBag.SpaceLeft = garageCapacity - vehicles.Count;
             var vehicleItems = vehicles.Select(v => new VehicleIndex
             {
                 Id = v.Id,
@@ -87,6 +87,23 @@ namespace Garage_2._0.Controllers
             var vehicleItems = vehicles.Select(v => new VehicleIndex
             {
                 Id = v.Id,
+                Owner = v.Member.FullName,
+                CheckInTime = v.CheckInTime,
+                RegistrationNumber = v.RegistrationNumber,
+                Type = v.Type
+            });
+            return View("Index", vehicleItems);
+        }
+
+        public ActionResult Filter(int id)
+        {
+            List<Vehicle> vehicles = db.Vehicles.Where(v => v.MemberId == id).ToList();
+            ViewBag.SpaceLeft = garageCapacity - db.Vehicles.Count();
+            var vehicleItems = vehicles.Select(v => new VehicleIndex
+            {
+                Id = v.Id,
+                Owner = v.Member.FullName,
+                CheckInTime = v.CheckInTime,
                 RegistrationNumber = v.RegistrationNumber,
                 Type = v.Type
             });

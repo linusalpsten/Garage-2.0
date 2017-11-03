@@ -111,6 +111,10 @@ namespace Garage_2._0.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Member member = db.Members.Find(id);
+            if (member.Vehicles.Count > 0)
+            {
+                return RedirectToAction("Filter", "Vehicles", new { id = id });
+            }
             db.Members.Remove(member);
             db.SaveChanges();
             return RedirectToAction("Index");
