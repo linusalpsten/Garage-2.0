@@ -11,6 +11,8 @@ namespace Garage_2._0.ViewModels
     public class VehicleDetails
     {
         public int Id { get; set; }
+        [DisplayName("Full Name")]
+        public string FullName { get; set; }
         [DisplayName("Registration Number")]
         public string RegistrationNumber { get; set; }
         public Color Color { get; set; }

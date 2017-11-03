@@ -151,6 +151,7 @@ namespace Garage_2._0.Controllers
             var vehicleItem = new VehicleDetails
             {
                 Id = vehicle.Id,
+                FullName = vehicle.Member.FullName,
                 Type = vehicle.Type,
                 Brand = vehicle.Brand,
                 Color = vehicle.Color,
@@ -274,6 +275,7 @@ namespace Garage_2._0.Controllers
             var vehicleItem = new VehicleDetails
             {
                 Id = vehicle.Id,
+                FullName = vehicle.Member.FullName,
                 Type = vehicle.Type,
                 Brand = vehicle.Brand,
                 Color = vehicle.Color,
@@ -289,17 +291,22 @@ namespace Garage_2._0.Controllers
         public ActionResult CheckOutConfirmed(int id, bool receipt)
         {
             Vehicle vehicle = db.Vehicles.Find(id);
-            db.Vehicles.Remove(vehicle);
-            db.SaveChanges();
+            Kvitto receiptItem = null;
             if (receipt)
             {
                 //  var kvittoItem = new Kvitto { checkOutTime = DateTime.Now}
-                var receiptItem = new Kvitto
+                receiptItem = new Kvitto
                 {
+                    FullName = vehicle.Member.FullName,
                     RegistrationNumber = vehicle.RegistrationNumber,
                     CheckInTime = vehicle.CheckInTime,
                     CheckOutTime = DateTime.Now
                 };
+            }
+            db.Vehicles.Remove(vehicle);
+            db.SaveChanges();
+            if (receipt)
+            {
                 return RedirectToAction("Receipt", receiptItem);
             }
             return RedirectToAction("Index");
