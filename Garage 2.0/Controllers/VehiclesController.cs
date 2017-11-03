@@ -107,7 +107,7 @@ namespace Garage_2._0.Controllers
                 RegistrationNumber = v.RegistrationNumber,
                 Type = v.Type
             });
-            return View("Index", vehicleItems);
+            return View(vehicleItems);
         }
 
         public ActionResult RegNr()

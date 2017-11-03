@@ -4,16 +4,14 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Member</h4>
-        <hr />
+
+    <div class="form-horizontal panel panel-default">
+        <div class="panel-heading">
+            <h4>Add member</h4>
+        </div>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -40,7 +38,8 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Garage", "Index" , "Vehicles", null, new { @class = "btn btn-default" }) |
+    @Html.ActionLink("Go to MemberList", "Index", null, new { @class = "btn btn-default" })
 </div>
 
 @section Scripts {
