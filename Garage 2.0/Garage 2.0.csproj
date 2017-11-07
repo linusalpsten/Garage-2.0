@@ -161,6 +161,10 @@
     <Compile Include="Migrations\201711020949217_add_members_and_types.Designer.cs">
       <DependentUpon>201711020949217_add_members_and_types.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711070824037_first_last_name_required.cs" />
+    <Compile Include="Migrations\201711070824037_first_last_name_required.Designer.cs">
+      <DependentUpon>201711070824037_first_last_name_required.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Vehicle.cs" />
@@ -264,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711020949217_add_members_and_types.resx">
       <DependentUpon>201711020949217_add_members_and_types.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711070824037_first_last_name_required.resx">
+      <DependentUpon>201711070824037_first_last_name_required.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

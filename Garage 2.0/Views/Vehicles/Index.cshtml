@@ -17,7 +17,14 @@
 }
 
 <p>
-    @Html.ActionLink("Check In", "CheckIn", null, new { @class = "btn btn-default" })
+    @if (ViewBag.SpaceLeft <= 0)
+    {
+        @Html.ActionLink("Check In", "CheckIn", null, new { @class = "btn btn-default disabled" })
+    }
+    else
+    {
+        @Html.ActionLink("Check In", "CheckIn", null, new { @class = "btn btn-default" })
+    }
     @Html.ActionLink("Add Member", "Create", "Members", null, new { @class = "btn btn-default" })
     @if (ViewBag.IsFull == "true")
     {
