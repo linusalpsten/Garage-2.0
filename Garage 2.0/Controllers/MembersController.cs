@@ -21,6 +21,12 @@ namespace Garage_2._0.Controllers
             return View(db.Members.ToList());
         }
 
+        public ActionResult Find(string searchString)
+        {
+            List<Member> members = db.Members.Where(m => m.FirstName.Contains(searchString)||m.LastName.Contains(searchString)).ToList();
+            return View("Index", members);
+        }
+
         // GET: Members/Details/5
         public ActionResult Details(int? id)
         {
