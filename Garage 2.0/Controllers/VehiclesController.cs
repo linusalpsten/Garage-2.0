@@ -156,7 +156,8 @@ namespace Garage_2._0.Controllers
                 Brand = vehicle.Brand,
                 Color = vehicle.Color,
                 CheckInTime = vehicle.CheckInTime,
-                RegistrationNumber = vehicle.RegistrationNumber
+                RegistrationNumber = vehicle.RegistrationNumber,
+                NumberOfWheels = vehicle.NumberOfWheels
             };
             return View(vehicleItem);
         }

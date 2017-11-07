@@ -21,5 +21,6 @@ namespace Garage_2._0.ViewModels
         public VehicleType Type { get; set; }
         [DisplayName("Check In Time")]
         public DateTime CheckInTime { get; set; }
+        public int NumberOfWheels { get; set; }
     }
 }
