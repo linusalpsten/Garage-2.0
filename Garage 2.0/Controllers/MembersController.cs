@@ -55,6 +55,8 @@ namespace Garage_2._0.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FirstName,LastName")] Member member)
         {
+            member.FirstName = char.ToUpper(member.FirstName.First()) + member.FirstName.Substring(1).ToLower();
+            member.LastName = char.ToUpper(member.LastName.First()) + member.LastName.Substring(1).ToLower();
             if (ModelState.IsValid)
             {
                 db.Members.Add(member);
